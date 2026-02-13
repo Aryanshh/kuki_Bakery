@@ -57,14 +57,14 @@ export default function Hero() {
             />
 
             <div className="z-10 text-center">
-                <motion.h1
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 0.8 }}
-                    className="text-8xl font-black text-accent drop-shadow-lg"
-                >
-                    Kuki's
-                </motion.h1>
+                <motion.img
+                    src={cookieImg}
+                    alt="Kuki Logo"
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.5 }}
+                    className="w-40 h-40 mx-auto drop-shadow-2xl"
+                />
                 <motion.h2
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
