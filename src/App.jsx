@@ -1,4 +1,3 @@
-```javascript
 import { useState } from 'react';
 import Hero from './components/Hero';
 import ProductSection from './components/ProductSection';
@@ -14,10 +13,10 @@ function App() {
   return (
     <div className="font-body text-accent bg-secondary min-h-screen">
       <Hero />
-      
+
       <main>
         {products.map((product, index) => (
-          <ProductSection 
+          <ProductSection
             key={index}
             {...product}
           />
@@ -40,4 +39,3 @@ function App() {
 }
 
 export default App;
-```
