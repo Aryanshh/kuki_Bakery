@@ -1,10 +1,10 @@
-// ... existing imports
+import { motion } from 'framer-motion';
 import { products } from '../data/products';
 
 export default function Hero() {
-    // Get Cookie and Brownie images
-    const brownieImg = products.find(p => p.id === 2)?.image;
-    const cookieImg = products.find(p => p.id === 3)?.image;
+    // Fallback images if product URLs are failing
+    const brownieImg = "https://images.unsplash.com/photo-1606313564200-e75d5e30476d?auto=format&fit=crop&w=300&q=80";
+    const cookieImg = "https://images.unsplash.com/photo-1499636138143-bd649025ebeb?auto=format&fit=crop&w=300&q=80";
 
     return (
         <section className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-secondary">
@@ -17,12 +17,10 @@ export default function Hero() {
             />
 
             {/* Floating Brownie (Top Leftish) */}
-            <motion.img
-                src={brownieImg}
-                alt="Delicious Brownie"
+            <motion.div
                 initial={{ opacity: 0, x: -100, rotate: -20 }}
                 animate={{
-                    opacity: 0.8,
+                    opacity: 1,
                     x: 0,
                     y: [0, -20, 0],
                     rotate: [-20, -10, -20]
@@ -33,16 +31,16 @@ export default function Hero() {
                     y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
                     rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                 }}
-                className="absolute top-1/4 left-10 md:left-1/4 w-32 h-32 md:w-48 md:h-48 object-cover rounded-full shadow-2xl z-0 pointer-events-none"
-            />
+                className="absolute top-1/4 left-10 md:left-1/4 w-32 h-32 md:w-48 md:h-48 z-0 pointer-events-none drop-shadow-2xl"
+            >
+                <img src="/brownie.png" alt="Brownie" className="w-full h-full object-contain mix-blend-multiply" />
+            </motion.div>
 
             {/* Floating Cookie (Bottom Rightish) */}
-            <motion.img
-                src={cookieImg}
-                alt="Crunchy Cookie"
+            <motion.div
                 initial={{ opacity: 0, x: 100, rotate: 20 }}
                 animate={{
-                    opacity: 0.8,
+                    opacity: 1,
                     x: 0,
                     y: [0, 20, 0],
                     rotate: [20, 30, 20]
@@ -53,23 +51,25 @@ export default function Hero() {
                     y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
                     rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" }
                 }}
-                className="absolute bottom-1/4 right-10 md:right-1/4 w-28 h-28 md:w-40 md:h-40 object-cover rounded-full shadow-2xl z-0 pointer-events-none"
-            />
+                className="absolute bottom-1/4 right-10 md:right-1/4 w-28 h-28 md:w-40 md:h-40 z-0 pointer-events-none drop-shadow-2xl"
+            >
+                <img src="/donut.png" alt="Donut" className="w-full h-full object-contain" />
+            </motion.div>
 
             <div className="z-10 text-center">
-                <motion.img
-                    src={cookieImg}
-                    alt="Kuki Logo"
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.5 }}
-                    className="w-40 h-40 mx-auto drop-shadow-2xl"
-                />
+                <motion.h1
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 0.8, type: "spring" }}
+                    className="text-8xl md:text-9xl font-black text-accent drop-shadow-lg font-heading leading-none"
+                >
+                    Kuki
+                </motion.h1>
                 <motion.h2
-                    initial={{ y: 50, opacity: 0 }}
+                    initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.8, duration: 0.8 }}
-                    className="text-4xl font-bold text-primary-dark mt-2 tracking-widest"
+                    className="text-4xl md:text-5xl font-bold text-primary-dark tracking-[0.2em] mt-[-10px] font-heading"
                 >
                     BAKERY
                 </motion.h2>
