@@ -1,6 +1,11 @@
-import { motion } from 'framer-motion';
+// ... existing imports
+import { products } from '../data/products';
 
 export default function Hero() {
+    // Get Cookie and Brownie images
+    const brownieImg = products.find(p => p.id === 2)?.image;
+    const cookieImg = products.find(p => p.id === 3)?.image;
+
     return (
         <section className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden bg-secondary">
             {/* Decorative Blob */}
@@ -9,6 +14,46 @@ export default function Hero() {
                 animate={{ scale: 1 }}
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="absolute w-[500px] h-[500px] bg-primary rounded-full blur-3xl opacity-50"
+            />
+
+            {/* Floating Brownie (Top Leftish) */}
+            <motion.img
+                src={brownieImg}
+                alt="Delicious Brownie"
+                initial={{ opacity: 0, x: -100, rotate: -20 }}
+                animate={{
+                    opacity: 0.8,
+                    x: 0,
+                    y: [0, -20, 0],
+                    rotate: [-20, -10, -20]
+                }}
+                transition={{
+                    opacity: { duration: 1, delay: 0.5 },
+                    x: { duration: 1, delay: 0.5 },
+                    y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                    rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="absolute top-1/4 left-10 md:left-1/4 w-32 h-32 md:w-48 md:h-48 object-cover rounded-full shadow-2xl z-0 pointer-events-none"
+            />
+
+            {/* Floating Cookie (Bottom Rightish) */}
+            <motion.img
+                src={cookieImg}
+                alt="Crunchy Cookie"
+                initial={{ opacity: 0, x: 100, rotate: 20 }}
+                animate={{
+                    opacity: 0.8,
+                    x: 0,
+                    y: [0, 20, 0],
+                    rotate: [20, 30, 20]
+                }}
+                transition={{
+                    opacity: { duration: 1, delay: 0.7 },
+                    x: { duration: 1, delay: 0.7 },
+                    y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                    rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="absolute bottom-1/4 right-10 md:right-1/4 w-28 h-28 md:w-40 md:h-40 object-cover rounded-full shadow-2xl z-0 pointer-events-none"
             />
 
             <div className="z-10 text-center">
