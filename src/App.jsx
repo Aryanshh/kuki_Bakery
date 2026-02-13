@@ -2,6 +2,7 @@ import Hero from './components/Hero';
 import ProductSection from './components/ProductSection';
 import Gallery from './components/Gallery';
 import OrderButton from './components/OrderButton';
+import FeedbackSection from './components/FeedbackSection';
 
 function App() {
   const products = [
@@ -55,6 +56,7 @@ function App() {
         ))}
 
         <Gallery />
+        <FeedbackSection />
       </main>
 
       <footer className="bg-accent text-secondary py-12 text-center">
